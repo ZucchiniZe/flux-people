@@ -15,7 +15,7 @@ class PersonStore {
   }
   onDeletePerson(index) {
     this.people.splice(index, 1);
-    localStorage.removeItem('people', JSON.stringify(this.people));
+    localStorage.setItem('people', JSON.stringify(this.people));
   }
   static getPeople() {
     return {
