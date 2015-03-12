@@ -3,14 +3,16 @@ import Actions from '../actions/Actions'
 
 class PersonStore {
   constructor() {
-    this.bindActions(Actions)
-    this.people = [{name: 'Alex Bierwagen', desc: 'A awesome person'}];
+    this.bindAction(Actions.addPerson, this.onAddPerson)
+    this.people = [{name:'Example',desc:'This is an example person.'}];
   }
   onAddPerson(person) {
     this.people.push(person);
   }
   static getPeople() {
-    return this.getState().people;
+    return {
+      people: this.getState().people
+    }
   }
 }
 

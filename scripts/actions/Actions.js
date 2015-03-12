@@ -1,8 +1,8 @@
 import alt from '../alt'
 
 class Actions {
-  constructor() {
-    this.generateActions('addPerson')
+  addPerson(person) {
+    this.dispatch(person)
   }
 }
 

@@ -5,37 +5,34 @@ import PersonStore from '../stores/PersonStore';
 export default class PeopleList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this._getStateFromStore();
+    this.state = this._getStateFromStore()
   }
   _getStateFromStore() {
-    return {
-      people: PersonStore.getPeople()
-    }
+    return PersonStore.getPeople()
   }
   onStoreChange() {
-    console.log(this._getStateFromStore)
     this.setState(this._getStateFromStore);
   }
   componentDidMount() {
-    console.log(PersonStore.getState().people)
-    PersonStore.listen(this.onStoreChange);
+    PersonStore.listen(this.onStoreChange.bind(this));
   }
   componentWillUnmount() {
-    PersonStore.unlisten(this.onStoreChange);
+    PersonStore.unlisten(this.onStoreChange.bind(this));
   }
   render() {
     var peopleNodes = this.state.people.map(person => {
       return (
-        <div className='person'>
+        <div className='person' key={person.name}>
           <p>Name: {person.name}</p>
           <p>Description: {person.desc}</p>
+          <hr/>
         </div>
       )
     });
     return (
       <div className='list'>
-        <h4>People List</h4>
-        <hr/>
+        <h3>People List</h3>
+        {peopleNodes}
       </div>
     )
   }

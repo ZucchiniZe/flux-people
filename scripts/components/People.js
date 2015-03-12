@@ -7,7 +7,7 @@ export default class People extends React.Component {
     let flux = this.props.flux
     return (
       <div className='people'>
-        <h1>People Wrapper</h1>
+        <h1>People</h1>
         <PeopleList/>
         <PeopleCreate/>
       </div>
