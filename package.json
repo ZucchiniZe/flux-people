@@ -35,6 +35,7 @@
     "webpack-dev-server": "^1.7.0"
   },
   "dependencies": {
+    "alt": "^0.14.2",
     "react": "^0.13.0"
   }
 }
