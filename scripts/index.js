@@ -1,5 +1,5 @@
 import React from 'react';
 import App from './components/App';
 
-// Actually render the app on the page
+// Render the application on `document.body`
 React.render(<App/>, document.body);

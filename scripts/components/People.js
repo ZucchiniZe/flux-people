@@ -2,10 +2,12 @@ import React from 'react'
 import PeopleList from './PeopleList'
 import PeopleCreate from './PeopleCreate'
 
-// The wrapper for people
+/**
+  * The react component that wraps the
+  * `<PeopleList/>` and the `<PeopleCreate/>` components
+  */
 export default class People extends React.Component {
   render() {
-    let flux = this.props.flux
     return (
       <div className='people'>
         <h1 style={{textAlign: 'center'}}>People</h1>

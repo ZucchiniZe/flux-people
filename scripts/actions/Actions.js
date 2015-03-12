@@ -1,6 +1,8 @@
 import alt from '../alt'
 
-// Define the actions for adding people
+/**
+  * Define the actions to call the store methods by
+  */
 class Actions {
   addPerson(person) {
     this.dispatch(person);

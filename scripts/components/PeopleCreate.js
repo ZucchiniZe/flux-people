@@ -2,9 +2,10 @@ import React from 'react';
 import Actions from '../actions/Actions';
 import Remarkable from 'remarkable';
 
+// Create new markdown renderer
 const md = new Remarkable();
 
-// A simple if component
+// A simple react if component
 class If extends React.Component {
   render() {
     if (this.props.test) {
@@ -17,22 +18,31 @@ class If extends React.Component {
 }
 
 // Render a form that allows you to create people
+/**
+  * React component that allows you to create people to add to the list
+  * Uses a form to generate the people
+  */
 export default class PeopleCreate extends React.Component {
+  // Initialize the component
   constructor(props) {
     super(props);
     this.state = {person:{name:'',desc:''}}
   }
+  // Handle the name changing
   handleName(e) {
     function capitalize(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
     this.setState({person: {name: capitalize(e.target.value), desc: this.state.person.desc}});
   }
+  // Handle the description changing
   handleDesc(e) {
     this.setState({person: {name: this.state.person.name, desc: e.target.value}});
   }
+  // Handle the form submit
   handleForm(e) {
     e.preventDefault();
+    // Check if both fields are blank
     if(this.state.person.name !== '' && this.state.person.desc !== '') {
       React.findDOMNode(this.refs.name).value = '';
       React.findDOMNode(this.refs.desc).value = '';
@@ -40,6 +50,7 @@ export default class PeopleCreate extends React.Component {
       this.setState({person:{name:'',desc:''}})
     }
   }
+  // Render the component
   render() {
     return (
       <div className='create col-md-8'>
