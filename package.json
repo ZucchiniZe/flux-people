@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "alt": "^0.14.2",
-    "react": "^0.13.0"
+    "react": "^0.13.0",
+    "remarkable": "^1.6.0"
   }
 }

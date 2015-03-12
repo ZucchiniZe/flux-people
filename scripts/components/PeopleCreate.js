@@ -1,7 +1,10 @@
 import React from 'react';
 import Actions from '../actions/Actions';
-import PersonStore from '../stores/PersonStore';
+import Remarkable from 'remarkable';
 
+const md = new Remarkable();
+
+// A simple if component
 class If extends React.Component {
   render() {
     if (this.props.test) {
@@ -13,6 +16,7 @@ class If extends React.Component {
   }
 }
 
+// Render a form that allows you to create people
 export default class PeopleCreate extends React.Component {
   constructor(props) {
     super(props);
@@ -38,8 +42,8 @@ export default class PeopleCreate extends React.Component {
   }
   render() {
     return (
-      <div className='create'>
-        <h3>Person Creator</h3>
+      <div className='create col-md-8'>
+        <h1>Creator</h1>
         <form onSubmit={this.handleForm.bind(this)}>
           <div className="form-group">
             <label>Name</label>
@@ -47,15 +51,22 @@ export default class PeopleCreate extends React.Component {
           </div>
           <div className="form-group">
             <label>Description</label>
-            <textarea ref='desc' className='form-control' value={this.state.person.desc} onChange={this.handleDesc.bind(this)}/>
+            <textarea ref='desc' rows='5' className='form-control' value={this.state.person.desc} onChange={this.handleDesc.bind(this)}/>
           </div>
           <button type='submit' className='btn btn-primary'>Submit</button>
         </form>
         <If test={this.state.person.name !== '' && this.state.person.desc !== ''}>
           <div className='person'>
-            <h4>Preview</h4>
+            <h2>Preview</h2>
             <p>Name: {this.state.person.name}</p>
-            <p>Description: {this.state.person.desc}</p>
+            <p>
+              Description:
+              <div className='description'
+                dangerouslySetInnerHTML={{
+                  __html: md.render(this.state.person.desc)
+                }}>
+              </div>
+            </p>
           </div>
         </If>
       </div>
