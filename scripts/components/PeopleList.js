@@ -13,6 +13,7 @@ export default class PeopleList extends React.Component {
   // Initialize props and state
   constructor(props) {
     super(props);
+    this.onStoreChange = this.onStoreChange.bind(this);
     this.state = this._getStateFromStore()
   }
   // Get the array from the store by running the static method `getPeople()` on the store
@@ -25,11 +26,11 @@ export default class PeopleList extends React.Component {
   }
   // Listen for changes from the store
   componentDidMount() {
-    PersonStore.listen(this.onStoreChange.bind(this));
+    PersonStore.listen(this.onStoreChange);
   }
   // Unlisten for changes from the store
   componentWillUnmount() {
-    PersonStore.unlisten(this.onStoreChange.bind(this));
+    PersonStore.unlisten(this.onStoreChange);
   }
   // Send the delete person action so the person gets delted
   deletePerson(index) {

@@ -8,8 +8,7 @@ import Actions from '../actions/Actions'
 class PersonStore {
   // Initialize the store with binding the store methods to the actions
   constructor() {
-    this.bindAction(Actions.addPerson, this.onAddPerson);
-    this.bindAction(Actions.deletePerson, this.onDeletePerson);
+    this.bindActions(Actions)
     // Get the people from localStorage and if they don't exist initialize a example array
     this.people = JSON.parse(localStorage.getItem('people')) || [{name:'Example',desc:'This is an example person.'}];
   }
@@ -31,4 +30,4 @@ class PersonStore {
   }
 }
 
-export default alt.createStore(PersonStore, 'PersonStore')
+export default alt.createStore(PersonStore)
